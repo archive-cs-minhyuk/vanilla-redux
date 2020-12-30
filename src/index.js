@@ -4,26 +4,12 @@ const add = document.getElementById("add");
 const minus = document.getElementById("minus");
 const number = document.querySelector("span");
 
-//const reducer = () => {};
-//const store = createStore(reducer); //createStore은 reducer(함수)를 인자로 받아야함.
+const countModifier = (state = 0) => {
+  //state=0 준 것은 default 값.
+  return state;
+}; //reducer는 내 data를 modify하는 함수! return하는 것: 내 app에 있는 data
+const countStore = createStore(countModifier); //createStore은 reducer(함수)를 인자로 받아야함.
 
-let count = 0;
+console.log(countStore.getState()); //이렇게 값 사용. 위에서 return한 값 나옴.
 
-number.innerText = count;
-
-const updateText = () => {
-  number.innerText = count;
-};
-
-const handleAdd = () => {
-  count = count + 1;
-  updateText();
-};
-
-const handleMinus = () => {
-  count = count - 1;
-  updateText();
-};
-
-add.addEventListener("click", handleAdd);
-minus.addEventListener("click", handleMinus);
+/* only reducer can modify the state! */
